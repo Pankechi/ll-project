@@ -1,0 +1,16 @@
+{% extends "learning_logs/base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<form method="post" action="{% url 'learning_logs:delete_entry' entry.id %}" class="form">
+  {% csrf_token %}
+ {% bootstrap_form form %}
+ {% buttons %}
+ <button name="submit" class="btn btn-primary">delete entry</button>
+ {% endbuttons %}
+ <input type="hidden" name="next"
+        value="{% url 'learning_logs:topic' topic.id %}"/>
+</form>
+
+{% endblock content %}
+
